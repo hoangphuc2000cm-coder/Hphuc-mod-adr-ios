@@ -25,199 +25,72 @@ header h1{font-size:2.5em;background:linear-gradient(90deg,#ff3c78,#ff8c00,#ffcc
 footer{text-align:center;padding:30px 20px;margin-top:40px;color:#888;font-size:0.9em}
 footer a{color:#ff3c78;text-decoration:none}
 @media (max-width:600px){header h1{font-size:1.8em}.mod-grid{grid-template-columns:1fr}}
-
-/* TRANG ĐĂNG NHẬP KEY */
-#loginScreen{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
-.login-box{background:rgba(255,255,255,0.08);border:2px solid #ff3c78;border-radius:20px;padding:40px 30px;max-width:420px;width:100%;text-align:center;box-shadow:0 0 40px rgba(255,60,120,0.5);margin:auto}
-.login-box h1{background:linear-gradient(90deg,#ff3c78,#ff8c00,#ffcc00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;font-size:2em;margin-bottom:15px;letter-spacing:2px}
-.login-box p{color:#a0e7ff;margin-bottom:25px;font-size:0.95em}
-.login-box input{width:100%;padding:15px 20px;border-radius:30px;border:2px solid #ff3c78;background:rgba(0,0,0,0.3);color:#fff;outline:none;font-size:1.1em;text-align:center;letter-spacing:2px;margin-bottom:15px;text-transform:uppercase}
-.login-box input::placeholder{color:#888;letter-spacing:1px;text-transform:none}
-.login-box button{width:100%;padding:15px;border-radius:30px;border:none;background:linear-gradient(90deg,#ff3c78,#ff8c00);color:#fff;font-size:1.1em;font-weight:700;cursor:pointer;transition:all 0.3s;letter-spacing:1px}
-.login-box button:hover{box-shadow:0 5px 25px rgba(255,60,120,0.7);transform:translateY(-2px)}
-.login-box button:disabled{opacity:0.6;cursor:not-allowed;transform:none}
-#loginMsg{margin-top:15px;font-size:0.95em;min-height:20px;font-weight:600;line-height:1.5}
-
-/* NÚT ĐĂNG XUẤT */
-#logoutBtn{position:fixed;bottom:20px;right:20px;background:linear-gradient(90deg,#ff3c78,#ff8c00);color:#fff;border:none;padding:12px 20px;border-radius:30px;cursor:pointer;font-weight:600;font-size:0.9em;z-index:100;box-shadow:0 4px 15px rgba(255,60,120,0.5)}
-#logoutBtn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,60,120,0.7)}
 </style>
 </head>
 <body>
 
-<!-- ==== TRANG ĐĂNG NHẬP KEY ==== -->
-<div id="loginScreen">
-  <div class="login-box">
-    <h1>🎮 HPHUC MOD Z 🎮</h1>
-    <p>🔑 Nhập key để truy cập kho mod</p>
-    <input type="text" id="keyInput" placeholder="HPHUC-XXXX-XXXX" maxlength="30" autocomplete="off">
-    <button id="activateBtn" onclick="activateKey()">🚀 KÍCH HOẠT</button>
-    <div id="loginMsg"></div>
-  </div>
+<header>
+<h1>🎮 HPHUC MOD Z 🎮</h1>
+<div class="notice">🛡️ Bản mod của mình được làm theo hướng <b>an toàn</b>, không can thiệp quá sâu vào file như 1 số bản mod khác nên <b>không ban ID</b> đâu nhé ae ❤️</div>
+<div class="search-box"><input type="text" id="searchInput" placeholder="🔍 Tìm kiếm mod..."></div>
+</header>
+
+<div class="mod-grid" id="modGrid">
+
+<div class="mod-card"><h3>MOD SKIN FULL HIỆU ỨNG TÓC ĐẠO SĨ ĐỎ NẠ CHIẾN THẦN DUNG NHAM</h3><p class="char">Nhân vật: <span>IGNIS</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD TÓC SỨ GIẢ ÁC MA ÁO ĐÁ BÓNG BỈ QUẦN NGỦ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD TÓC BÍCH VÀNG ÁO VỆ BINH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN SÚNG M590 PHONG XÀ THÀNH M590 MEGA PX</h3><p class="char">Skin Súng: <span>M590 Phong Xà</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN PHONG CÁCH FREE STYLE QUẦN THÁM HIỂM MŨ ĐƯỜNG PHỐ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN SÚNG M1887 PHONG XÀ THÀNH AWM HOẢ BĂNG</h3><p class="char">Skin Súng: <span>M1887 Phong Xà</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN PHONG CÁCH FREE STYLE QUẦN ĐƯỜNG PHỐ NẠ NOEL</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO THỎ NEON KÈM NẤM ĐẤM CHIDORI</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh + IGNIS</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD FULL HOẠT ẢNH MỘNG CẢNH FIX LAG</h3><p class="char">Mặc Định</p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN PHONG CÁCH FREE STYLE ÁO DA ĐỎ MŨ ĐƯỜNG PHỐ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN TÓC BÍCH VÀNG ÁO COLUMBIA</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN QUÁI NHÂN HƯ KHÔNG TÓC LÃNG KHÁCH NẠ CỎ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO MEGUMI QUẦN STREET XANH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO THÍCH KHÁCH NẠ NOEL TÓC LÃNG KHÁCH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN MŨ TIỂU TIÊN ÁO ĐÁ BÓNG BỈ QUẦN NGỦ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN QUÁI NHÂN HƯ KHÔNG TÓC BÍCH VÀNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN TÓC ƯNG TỘC PHONG CÁCH BOY PHỐ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN MŨ TVC MÙA 2 ÁO ĐÁ BÓNG MEXICO</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN QUÁI NHÂN HƯ KHÔNG MŨ TVC 2</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN MŨ TVC MÙA 2 ÁO CƯỚP BIỂN PHONG CÁCH DÂN BẮN KAI SƠ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG BỈ QUẦN GOJO NẠ CỎ DÂN BẮN KAI SƠ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG BRAZIL QUẦN GOJO</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG PHÁP QUẦN VỆ BINH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN CAPTAIN AMERICAN</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG BỈ NẠ MA BÚP BÊ 7 ĐÁ TÓC LÃNG KHÁCH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN FULL SET QUÁI NHÂN HƯ KHÔNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN NẠ HẮC TINH VER 2 PHONG CÁCH TỬ CHIẾN</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO THỎ QUẬY TÓC LÃNG KHÁCH PHONG CÁCH IDOL TIK TOK</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN SÚNG M1887 THÁNH PHỒNG TRÊN PHONG XÀ</h3><p class="char">Súng: <span>M1887 Phong Xà</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG BỈ QUẦN GOJO</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN BẮN RANK KÈM HÀNH ĐỘNG AWM LV7</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN MŨ TIỂU TIÊN ÁO NGỦ QUẦN CÁNH TRẮNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN MŨ TIỂU TIÊN ÁO NGỦ QUẦN CÁNH VÀNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN MŨ TIỂU TIÊN ÁO VỆ BINH NẠ CỎ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN OB55 GÓI ĐỒ SPIDER MAN</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO BÓNG ĐÁ QUẦN HỌC SINH NẠ CỎ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG QUẦN GẤU TRÚC</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG QUẦN NGỦ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN OB55 GÓI ĐỒ NGỦ HELLO KITTY MÀU HỒNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+<div class="mod-card"><h3>MOD SKIN OB55 GÓI ĐỒ NGỦ TÓC LÃNG KHÁCH VÀ TÓC SÓI</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+
 </div>
 
-<!-- ==== NỘI DUNG CHÍNH ==== -->
-<div id="mainContent" style="display:none">
-  <header>
-    <h1>🎮 HPHUC MOD Z 🎮</h1>
-    <div class="notice">🛡️ Bản mod của mình được làm theo hướng <b>an toàn</b>, không can thiệp quá sâu vào file như 1 số bản mod khác nên <b>không ban ID</b> đâu nhé ae ❤️</div>
-    <div class="search-box"><input type="text" id="searchInput" placeholder="🔍 Tìm kiếm mod..."></div>
-  </header>
-  <div class="mod-grid" id="modGrid">
-
-    <div class="mod-card"><h3>MOD SKIN FULL HIỆU ỨNG TÓC ĐẠO SĨ ĐỎ NẠ CHIẾN THẦN DUNG NHAM</h3><p class="char">Nhân vật: <span>IGNIS</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD TÓC SỨ GIẢ ÁC MA ÁO ĐÁ BÓNG BỈ QUẦN NGỦ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD TÓC BÍCH VÀNG ÁO VỆ BINH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN SÚNG M590 PHONG XÀ THÀNH M590 MEGA PX</h3><p class="char">Skin Súng: <span>M590 Phong Xà</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN PHONG CÁCH FREE STYLE QUẦN THÁM HIỂM MŨ ĐƯỜNG PHỐ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN SÚNG M1887 PHONG XÀ THÀNH AWM HOẢ BĂNG</h3><p class="char">Skin Súng: <span>M1887 Phong Xà</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN PHONG CÁCH FREE STYLE QUẦN ĐƯỜNG PHỐ NẠ NOEL</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO THỎ NEON KÈM NẤM ĐẤM CHIDORI</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh + IGNIS</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD FULL HOẠT ẢNH MỘNG CẢNH FIX LAG</h3><p class="char">Mặc Định</p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN PHONG CÁCH FREE STYLE ÁO DA ĐỎ MŨ ĐƯỜNG PHỐ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN TÓC BÍCH VÀNG ÁO COLUMBIA</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN QUÁI NHÂN HƯ KHÔNG TÓC LÃNG KHÁCH NẠ CỎ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</aO></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO MEGUMI QU THẦN STREET XANÍH</h3><p class="CHchar">Nhân vật: <span> KHALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁÁCH NẠ NOEL TÓC LÃNG KHÁCH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN MŨ TIỂU TIÊN ÁO ĐÁ BÓNG BỈ QUẦN NGỦ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN QUÁI NHÂN HƯ KHÔNG TÓC BÍCH VÀNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN TÓC ƯNG TỘC PHONG CÁCH BOY PHỐ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN MŨ TVC MÙA 2 ÁO ĐÁ BÓNG MEXICO</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN QUÁI NHÂN HƯ KHÔNG MŨ TVC 2</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN MŨ TVC MÙA 2 ÁO CƯỚP BIỂN PHONG CÁCH DÂN BẮN KAI SƠ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG BỈ QUẦN GOJO NẠ CỎ DÂN BẮN KAI SƠ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG BRAZIL QUẦN GOJO</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG PHÁP QUẦN VỆ BINH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN CAPTAIN AMERICAN</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG BỈ NẠ MA BÚP BÊ 7 ĐÁ TÓC LÃNG KHÁCH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN FULL SET QUÁI NHÂN HƯ KHÔNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN NẠ HẮC TINH VER 2 PHONG CÁCH TỬ CHIẾN</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO THỎ QUẬY TÓC LÃNG KHÁCH PHONG CÁCH IDOL TIK TOK</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN SÚNG M1887 THÁNH PHỒNG TRÊN PHONG XÀ</h3><p class="char">Súng: <span>M1887 Phong Xà</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG BỈ QUẦN GOJO</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN BẮN RANK KÈM HÀNH ĐỘNG AWM LV7</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN MŨ TIỂU TIÊN ÁO NGỦ QUẦN CÁNH TRẮNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN MŨ TIỂU TIÊN ÁO NGỦ QUẦN CÁNH VÀNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN MŨ TIỂU TIÊN ÁO VỆ BINH NẠ CỎ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN OB55 GÓI ĐỒ SPIDER MAN</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO BÓNG ĐÁ QUẦN HỌC SINH NẠ CỎ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG QUẦN GẤU TRÚC</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO ĐÁ BÓNG QUẦN NGỦ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN OB55 GÓI ĐỒ NGỦ HELLO KITTY MÀU HỒNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN OB55 GÓI ĐỒ NGỦ TÓC LÃNG KHÁCH VÀ TÓC SÓI</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-
-  </div>
-  <footer>© 2025 <b>HPHUC MOD Z</b> — Chia sẻ mod miễn phí cho cộng đồng ❤️</footer>
-  <button id="logoutBtn" onclick="logout()">🚪 Đăng xuất</button>
-</div>
+<footer>© 2025 <b>HPHUC MOD Z</b> — Chia sẻ mod miễn phí cho cộng đồng ❤️</footer>
 
 <script>
-// ==========================================
-// ⚠️ THAY URL NÀY BẰNG URL WEB APP CỦA BẠN
-// ==========================================
-const API_URL = "DÁN_URL_API_VÀO_ĐÂY";
-
-// ==== KIỂM TRA PHIÊN ĐĂNG NHẬP ====
-window.addEventListener('DOMContentLoaded', function() {
-  const savedKey = localStorage.getItem('hphuc_key_value');
-  if (savedKey) verifyKey(savedKey);
-});
-
-function verifyKey(key) {
-  const cb = 'jsonpCb_' + Date.now();
-  window[cb] = function(data) {
-    if (data.success) showMainContent();
-    else localStorage.removeItem('hphuc_key_value');
-    delete window[cb];
-    const s = document.getElementById('jsonp_' + cb);
-    if (s) document.body.removeChild(s);
-  };
-  const script = document.createElement('script');
-  script.id = 'jsonp_' + cb;
-  script.src = API_URL + '?action=checkKey&key=' + encodeURIComponent(key) + '&callback=' + cb;
-  script.onerror = function() {
-    localStorage.removeItem('hphuc_key_value');
-    delete window[cb];
-  };
-  document.body.appendChild(script);
-}
-
-function activateKey() {
-  const keyInput = document.getElementById('keyInput');
-  const msgDiv = document.getElementById('loginMsg');
-  const btn = document.getElementById('activateBtn');
-  const key = keyInput.value.trim().toUpperCase();
-  
-  if (!key) {
-    msgDiv.style.color = '#ff3c78';
-    msgDiv.textContent = "⚠️ Vui lòng nhập key!";
-    return;
-  }
-  
-  btn.disabled = true;
-  btn.textContent = "⏳ Đang kiểm tra...";
-  msgDiv.style.color = '#a0e7ff';
-  msgDiv.textContent = "Đang xác thực key...";
-  
-  const cb = 'jsonpCb_' + Date.now();
-  window[cb] = function(data) {
-    if (data.success) {
-      msgDiv.style.color = '#00ff88';
-      msgDiv.textContent = data.message;
-      localStorage.setItem('hphuc_key_value', key);
-      setTimeout(() => showMainContent(), 800);
-    } else {
-      msgDiv.style.color = '#ff3c78';
-      msgDiv.textContent = data.message;
-      btn.disabled = false;
-      btn.textContent = "🚀 KÍCH HOẠT";
-    }
-    delete window[cb];
-    const s = document.getElementById('jsonp_' + cb);
-    if (s) document.body.removeChild(s);
-  };
-  const script = document.createElement('script');
-  script.id = 'jsonp_' + cb;
-  script.src = API_URL + '?action=checkKey&key=' + encodeURIComponent(key) + '&callback=' + cb;
-  script.onerror = function() {
-    msgDiv.style.color = '#ff3c78';
-    msgDiv.textContent = "❌ Không kết nối được server!";
-    btn.disabled = false;
-    btn.textContent = "🚀 KÍCH HOẠT";
-    delete window[cb];
-    const s = document.getElementById('jsonp_' + cb);
-    if (s) document.body.removeChild(s);
-  };
-  document.body.appendChild(script);
-}
-
-function showMainContent() {
-  document.getElementById('loginScreen').style.display = 'none';
-  document.getElementById('mainContent').style.display = 'block';
-  initSearch();
-}
-
-function logout() {
-  if (confirm("Bạn có chắc muốn đăng xuất không?")) {
-    localStorage.removeItem('hphuc_key_value');
-    location.reload();
-  }
-}
-
-function initSearch() {
-  const searchInput = document.getElementById('searchInput');
-  const modCards = document.querySelectorAll('.mod-card');
-  searchInput.addEventListener('input', function() {
-    const keyword = this.value.toLowerCase();
-    modCards.forEach(card => {
-      const text = card.textContent.toLowerCase();
-      card.style.display = text.includes(keyword) ? '' : 'none';
-    });
+const searchInput = document.getElementById('searchInput');
+const modCards = document.querySelectorAll('.mod-card');
+searchInput.addEventListener('input', function() {
+  const keyword = this.value.toLowerCase();
+  modCards.forEach(card => {
+    const text = card.textContent.toLowerCase();
+    card.style.display = text.includes(keyword) ? '' : 'none';
   });
-}
-
-document.getElementById('keyInput').addEventListener('keypress', function(e) {
-  if (e.key === 'Enter') activateKey();
 });
 </script>
 </body>
