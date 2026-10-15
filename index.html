@@ -1,4 +1,77 @@
-<!DOCTYPE html>
+// ============================================
+// HPHUC MOD Z - KEY API
+// ============================================
+const SHEET_NAME = "Keys";
+
+function doGet(e) {
+  const action = e.parameter.action;
+  const callback = e.parameter.callback;
+  
+  let result;
+  if (action === "checkKey") {
+    result = checkKey(e.parameter.key);
+  } else {
+    result = { success: false, message: "Hành động không hợp lệ" };
+  }
+  
+  if (callback) {
+    return ContentService
+      .createTextOutput(callback + '(' + JSON.stringify(result) + ')')
+      .setMimeType(ContentService.MimeType.JAVASCRIPT);
+  }
+  return ContentService
+    .createTextOutput(JSON.stringify(result))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+function checkKey(keyInput) {
+  if (!keyInput) return { success: false, message: "Vui lòng nhập key!" };
+  
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) return { success: false, message: "Hệ thống chưa có key!" };
+  
+  const data = sheet.getRange(2, 1, lastRow - 1, 5).getValues();
+  const keyUpper = String(keyInput).trim().toUpperCase();
+  
+  for (let i = 0; i < data.length; i++) {
+    const rowKey = String(data[i][0]).trim().toUpperCase();
+    const rowStatus = String(data[i][2]).trim();
+    
+    if (rowKey === keyUpper) {
+      const rowIndex = i + 2;
+      let type = "1 ngày";
+      if (keyUpper.indexOf("HPHUC-W-") === 0) type = "1 tuần";
+      
+      if (rowStatus === "Đã dùng") {
+        const expireOld = data[i][4];
+        if (expireOld && new Date() < new Date(expireOld)) {
+          return { success: true, message: "✅ Key còn hiệu lực" };
+        }
+        return { success: false, message: "❌ Key này đã được sử dụng rồi!" };
+      }
+      
+      const now = new Date();
+      const expireDate = new Date(now);
+      if (type === "1 ngày") {
+        expireDate.setDate(expireDate.getDate() + 1);
+      } else {
+        expireDate.setDate(expireDate.getDate() + 7);
+      }
+      
+      sheet.getRange(rowIndex, 2).setValue(type);
+      sheet.getRange(rowIndex, 3).setValue("Đã dùng");
+      sheet.getRange(rowIndex, 4).setValue(now);
+      sheet.getRange(rowIndex, 5).setValue(expireDate);
+      
+      return { 
+        success: true, 
+        message: "✅ Kích hoạt thành công! (Key " + type + ")" 
+      };
+    }
+  }
+  return { success: false, message: "❌ Key không tồn tại!" };
+}<!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
@@ -50,7 +123,7 @@ footer a{color:#ff3c78;text-decoration:none}
   <div class="login-box">
     <h1>🎮 HPHUC MOD Z 🎮</h1>
     <p>🔑 Nhập key để truy cập kho mod</p>
-    <input type="text" id="keyInput" placeholder="HP-XXXXXXXX" maxlength="20" autocomplete="off">
+    <input type="text" id="keyInput" placeholder="HPHUC-XXXX-XXXX" maxlength="30" autocomplete="off">
     <button id="activateBtn" onclick="activateKey()">🚀 KÍCH HOẠT</button>
     <div id="loginMsg"></div>
   </div>
@@ -70,14 +143,14 @@ footer a{color:#ff3c78;text-decoration:none}
     <div class="mod-card"><h3>MOD TÓC BÍCH VÀNG ÁO VỆ BINH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD SKIN SÚNG M590 PHONG XÀ THÀNH M590 MEGA PX</h3><p class="char">Skin Súng: <span>M590 Phong Xà</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD SKIN PHONG CÁCH FREE STYLE QUẦN THÁM HIỂM MŨ ĐƯỜNG PHỐ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN SÚNG M1887 PHONG XÀ THÀNH AWM HOẢ BĂNG</h3><p class="char">Skin Súng: <span>M1887 Phong Xà</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+    <div class="mod-card"><h3>MOD SKIN S TÚNG M1887 PHảiONG XÀ THÀNH A XuWM HOẢ BĂNG</h3><p class="char">Skin Súng: <span>M1887 Phong Xà</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD SKIN PHONG CÁCH FREE STYLE QUẦN ĐƯỜNG PHỐ NẠ NOEL</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD SKIN ÁO THỎ NEON KÈM NẤM ĐẤM CHIDORI</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh + IGNIS</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD FULL HOẠT ẢNH MỘNG CẢNH FIX LAG</h3><p class="char">Mặc Định</p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD SKIN PHONG CÁCH FREE STYLE ÁO DA ĐỎ MŨ ĐƯỜNG PHỐ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD SKIN TÓC BÍCH VÀNG ÁO COLUMBIA</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD SKIN QUÁI NHÂN HƯ KHÔNG TÓC LÃNG KHÁCH NẠ CỎ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
-    <div class="mod-card"><h3>MOD SKIN ÁO MEGUMI QUẦN STREET XANH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
+    <div class="mod-card"><h3>MOD SKIN ÁO MEGUMI QUẦN STREET XANH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ống</a></div>
     <div class="mod-card"><h3>MOD SKIN ÁO THÍCH KHÁCH NẠ NOEL TÓC LÃNG KHÁCH</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD SKIN MŨ TIỂU TIÊN ÁO ĐÁ BÓNG BỈ QUẦN NGỦ</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
     <div class="mod-card"><h3>MOD SKIN QUÁI NHÂN HƯ KHÔNG TÓC BÍCH VÀNG</h3><p class="char">Nhân vật: <span>ALOK Thức Tỉnh</span></p><a href="#" class="download-btn">⬇ Tải Xuống</a></div>
@@ -117,16 +190,15 @@ footer a{color:#ff3c78;text-decoration:none}
 // ==========================================
 const API_URL = "DÁN_URL_API_VÀO_ĐÂY";
 
-// ==== KIỂM TRA PHIÊN ĐĂNG NHẬP KHI TẢI TRANG ====
+// ==== KIỂM TRA PHIÊN ĐĂNG NHẬP ====
 window.addEventListener('DOMContentLoaded', function() {
   const savedKey = localStorage.getItem('hphuc_key_value');
   if (savedKey) {
-    // Xác thực lại key với server
     verifyKey(savedKey);
   }
 });
 
-// ==== HÀM XÁC THỰC KEY ====
+// ==== XÁC THỰC KEY ====
 function verifyKey(key) {
   const callbackName = 'jsonpCb_' + Date.now();
   window[callbackName] = function(data) {
@@ -136,11 +208,9 @@ function verifyKey(key) {
       localStorage.removeItem('hphuc_key_value');
     }
     delete window[callbackName];
-    if (document.getElementById('jsonp_' + callbackName)) {
-      document.body.removeChild(document.getElementById('jsonp_' + callbackName));
-    }
+    const s = document.getElementById('jsonp_' + callbackName);
+    if (s) document.body.removeChild(s);
   };
-  
   const script = document.createElement('script');
   script.id = 'jsonp_' + callbackName;
   script.src = API_URL + '?action=checkKey&key=' + encodeURIComponent(key) + '&callback=' + callbackName;
@@ -170,7 +240,6 @@ function activateKey() {
   msgDiv.textContent = "Đang xác thực key...";
   
   const callbackName = 'jsonpCb_' + Date.now();
-  
   window[callbackName] = function(data) {
     if (data.success) {
       msgDiv.style.color = '#00ff88';
@@ -184,23 +253,20 @@ function activateKey() {
       btn.textContent = "🚀 KÍCH HOẠT";
     }
     delete window[callbackName];
-    if (document.getElementById('jsonp_' + callbackName)) {
-      document.body.removeChild(document.getElementById('jsonp_' + callbackName));
-    }
+    const s = document.getElementById('jsonp_' + callbackName);
+    if (s) document.body.removeChild(s);
   };
-  
   const script = document.createElement('script');
   script.id = 'jsonp_' + callbackName;
   script.src = API_URL + '?action=checkKey&key=' + encodeURIComponent(key) + '&callback=' + callbackName;
   script.onerror = function() {
     msgDiv.style.color = '#ff3c78';
-    msgDiv.textContent = "❌ Không kết nối được server! Vui lòng thử lại.";
+    msgDiv.textContent = "❌ Không kết nối được server!";
     btn.disabled = false;
     btn.textContent = "🚀 KÍCH HOẠT";
     delete window[callbackName];
-    if (document.getElementById('jsonp_' + callbackName)) {
-      document.body.removeChild(document.getElementById('jsonp_' + callbackName));
-    }
+    const s = document.getElementById('jsonp_' + callbackName);
+    if (s) document.body.removeChild(s);
   };
   document.body.appendChild(script);
 }
